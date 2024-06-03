@@ -1,7 +1,6 @@
 package com.example.jetpackcompose
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -10,6 +9,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +22,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -61,6 +64,16 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    JetpackComposeTheme {
+        Greeting("Android")
+    }
+}
+
+
+/**1.) Basuic Layout*/
 @Composable
 fun UserProfile() {
     Box(modifier = Modifier) {
@@ -86,15 +99,8 @@ fun UserProfilePreview() {
     UserProfile()
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    JetpackComposeTheme {
-        Greeting("Android")
-    }
-}
 
-
+/**2.) Modifier Layout*/
 @Composable
 fun UserCard(name: String, msg: String) {
     Row(
@@ -119,10 +125,14 @@ fun UserCard(name: String, msg: String) {
                 .fillMaxWidth()
         ) {
             Text(text = name, fontWeight = FontWeight.Bold)
-            Text(text = msg,
-                modifier = Modifier.offset(x = 10.dp))
-            Icon(imageVector = Icons.Default.CheckCircle, contentDescription = null,
-                modifier = Modifier.align(Alignment.End))
+            Text(
+                text = msg,
+                modifier = Modifier.offset(x = 10.dp)
+            )
+            Icon(
+                imageVector = Icons.Default.CheckCircle, contentDescription = null,
+                modifier = Modifier.align(Alignment.End)
+            )
         }
     }
 }
@@ -131,4 +141,28 @@ fun UserCard(name: String, msg: String) {
 @Composable
 private fun UserCardPreview() {
     UserCard(name = "Android Developer", msg = "Belajar Jetpack Compose")
+}
+
+
+/**3.) Componen Slot Layout*/
+@Composable
+fun SlotBaseLayout() {
+    Button(
+        onClick = { /*TODO*/ },
+        contentPadding = PaddingValues(start = 30.dp, top = 10.dp, end = 30.dp, bottom = 10.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Favorite, contentDescription = null,
+            modifier = Modifier
+                .size(ButtonDefaults.IconSize)
+        )
+        Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+        Text(text = "Like")
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SlotBaseLayoutPreview() {
+    SlotBaseLayout()
 }
