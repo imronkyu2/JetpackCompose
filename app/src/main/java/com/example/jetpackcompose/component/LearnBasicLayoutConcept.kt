@@ -37,18 +37,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jetpackcompose.Greeting
 import com.example.jetpackcompose.R
-import com.example.jetpackcompose.ui.theme.JetpackComposeTheme
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    JetpackComposeTheme {
-        Greeting("Android")
-    }
-}
 
 
 /**

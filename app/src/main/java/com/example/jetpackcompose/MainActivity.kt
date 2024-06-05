@@ -4,13 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.jetpackcompose.component.MainTopBar
+import com.example.jetpackcompose.component.TopMenu
 import com.example.jetpackcompose.ui.theme.JetpackComposeTheme
+import com.gunder.market.model.dummyListTopMenus
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,21 +28,50 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             JetpackComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Jetpack Compose",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+
                 }
+
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MainTopMenu(modifier: Modifier = Modifier) {
+    LazyRow {
+        items(dummyListTopMenus){
+            TopMenu(listTopMenu = it)
+        }
+    }
 }
+
+@Preview(showBackground = true)
+@Composable
+private fun MainTopBar() {
+    JetpackComposeTheme {
+        MainTopMenu()
+    }
+}
+
+@Composable
+fun MarketApp(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier.verticalScroll(rememberScrollState())
+    ) {
+        MainTopBar()
+        MainTopMenu()
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun MarketAppPreview() {
+    MarketApp()
+}
+
+

@@ -21,10 +21,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcompose.R
 
 @Composable
 fun MainTopBar(modifier: Modifier = Modifier) {
@@ -77,8 +79,12 @@ fun MainTopBar(modifier: Modifier = Modifier) {
                 imageVector = Icons.Default.LocationOn, contentDescription = "LocationOn",
                 modifier = Modifier.size(18.dp)
             )
-            Text(text = "Dikirim ke alamat", fontSize = 12.sp)
-            Text(text = "Imron Marpaung", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            Text(text = stringResource(R.string.txt_dummy_address), fontSize = 12.sp)
+            Text(
+                text = stringResource(R.string.imron_marpaung),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold
+            )
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "KeyboardArrowDown",
