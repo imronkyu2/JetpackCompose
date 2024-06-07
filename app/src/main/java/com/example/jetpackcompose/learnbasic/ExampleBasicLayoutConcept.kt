@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.component
+package com.example.jetpackcompose.learnbasic
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
