@@ -15,10 +15,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpackcompose.component.BottomCategory
+import com.example.jetpackcompose.component.CartCategory
 import com.example.jetpackcompose.component.MainTopBar
 import com.example.jetpackcompose.component.MainTopCategory
 import com.example.jetpackcompose.component.TopMenu
 import com.example.jetpackcompose.ui.theme.JetpackComposeTheme
+import com.gunder.market.model.dummyListBanner
+import com.gunder.market.model.dummyListBottomCategory
 import com.gunder.market.model.dummyListTopCategory
 import com.gunder.market.model.dummyListTopMenus
 
@@ -73,6 +77,30 @@ private fun MainTopBar() {
 }
 
 @Composable
+fun MainBottomCategory(modifier: Modifier = Modifier) {
+    LazyRow {
+        items(dummyListBottomCategory) {
+            BottomCategory(listBottomCategory = it)
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun MainBottomCategoryPreview() {
+    MainBottomCategory()
+}
+
+@Composable
+fun MainCartCategory(modifier: Modifier = Modifier) {
+    LazyRow {
+        items(dummyListBanner){
+            CartCategory(listBanner = it)
+        }
+    }
+}
+
+@Composable
 fun MarketApp(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.verticalScroll(rememberScrollState())
@@ -80,6 +108,9 @@ fun MarketApp(modifier: Modifier = Modifier) {
         MainTopBar()
         MainTopMenu()
         MainCategoryTop()
+        MainCartCategory()
+        MainBottomCategory()
+
     }
 
 }
