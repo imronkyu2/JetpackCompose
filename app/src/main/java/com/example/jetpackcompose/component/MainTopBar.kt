@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -19,6 +20,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -30,6 +35,9 @@ import com.example.jetpackcompose.R
 
 @Composable
 fun MainTopBar(modifier: Modifier = Modifier) {
+    var name by remember {
+        mutableStateOf("")
+    }
     Column(modifier = modifier.padding(16.dp)) {
         Row(
             modifier = Modifier.width(IntrinsicSize.Max),
@@ -39,8 +47,11 @@ fun MainTopBar(modifier: Modifier = Modifier) {
         ) {
             OutlinedTextField(
                 modifier = Modifier.weight(1f),
-                value = "",
-                onValueChange = {},
+                shape = RoundedCornerShape(8.dp),
+                value = name,
+                onValueChange = { newName->
+                    name = newName
+                },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
