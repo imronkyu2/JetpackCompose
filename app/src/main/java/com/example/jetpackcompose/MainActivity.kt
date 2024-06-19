@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcompose.component.BottomCategory
 import com.example.jetpackcompose.component.CartCategory
+import com.example.jetpackcompose.component.MainBannerVertical
 import com.example.jetpackcompose.component.MainImageCategory
 import com.example.jetpackcompose.component.MainTopBar
 import com.example.jetpackcompose.component.MainTopCategory
@@ -24,6 +25,7 @@ import com.example.jetpackcompose.component.TopMenu
 import com.example.jetpackcompose.ui.theme.JetpackComposeTheme
 import com.gunder.market.model.dummyListBanner
 import com.gunder.market.model.dummyListBottomCategory
+import com.gunder.market.model.dummyListCardForYou
 import com.gunder.market.model.dummyListTopCategory
 import com.gunder.market.model.dummyListTopMenus
 
@@ -112,6 +114,7 @@ fun MarketApp(modifier: Modifier = Modifier) {
         MainCartCategory()
         MainBottomCategory()
         MainImageCategory()
+        MainListBannerVertical()
     }
 
 }
@@ -120,6 +123,15 @@ fun MarketApp(modifier: Modifier = Modifier) {
 @Composable
 private fun MarketAppPreview() {
     MarketApp()
+}
+
+@Composable
+fun MainListBannerVertical(modifier: Modifier = Modifier) {
+    LazyRow {
+        items(dummyListCardForYou){
+            MainBannerVertical(listBanner = it)
+        }
+    }
 }
 
 
