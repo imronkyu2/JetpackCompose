@@ -6,15 +6,18 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpackcompose.component.BottomBar
 import com.example.jetpackcompose.component.BottomCategory
 import com.example.jetpackcompose.component.CartCategory
 import com.example.jetpackcompose.component.MainBannerVertical
@@ -105,17 +108,23 @@ fun MainCartCategory(modifier: Modifier = Modifier) {
 
 @Composable
 fun MarketApp(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier.verticalScroll(rememberScrollState())
-    ) {
-        MainTopBar()
-        MainTopMenu()
-        MainCategoryTop()
-        MainCartCategory()
-        MainBottomCategory()
-        MainImageCategory()
-        MainListBannerVertical()
+    Scaffold(bottomBar = { BottomBar()}) {
+        paddingValues ->
+        Column(
+            modifier = modifier.verticalScroll(rememberScrollState())
+                .padding(paddingValues)
+        ) {
+            MainTopBar()
+            MainTopMenu()
+            MainCategoryTop()
+            MainCartCategory()
+            MainBottomCategory()
+            MainImageCategory()
+            MainListBannerVertical()
+        }
+
     }
+
 
 }
 
