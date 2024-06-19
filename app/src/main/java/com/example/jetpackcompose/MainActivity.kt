@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcompose.component.BottomCategory
 import com.example.jetpackcompose.component.CartCategory
+import com.example.jetpackcompose.component.MainImageCategory
 import com.example.jetpackcompose.component.MainTopBar
 import com.example.jetpackcompose.component.MainTopCategory
 import com.example.jetpackcompose.component.TopMenu
@@ -110,7 +111,7 @@ fun MarketApp(modifier: Modifier = Modifier) {
         MainCategoryTop()
         MainCartCategory()
         MainBottomCategory()
-
+        MainImageCategory()
     }
 
 }
